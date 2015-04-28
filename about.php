@@ -29,11 +29,14 @@ require_once('inc.php');
 </nav>
 <div class="container center">
   <hr>
-  <h6>说点什么呢，我只是想练练手而已</h6>
+  <h6>说点什么呢</h6>
+  <h6>这是根据一个app做的</h6>
+  <h6>数据都是别人的，不是我原创</h6>
   <h6>如果有什么问题</h6>
   <h6>证明网站还没有做完</h6>
   <h6>我也没办法，一直是我一个人哦</h6>
   <h6>如果你喜欢，请支持app哦</h6>
+  <h6>最美创意</h6>
   <h6><img src="img/erwei.png" alt=""></h6>
     <div class="ds-thread" data-thread-key="1" data-title="about" data-url="zmcy.yangzhongchao.com"></div>
 <!-- 多说评论框 end -->
