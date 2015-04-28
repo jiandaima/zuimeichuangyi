@@ -1,98 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	
-<?php
-
-   $class = array("1" =>"游戏/动漫",
-                  "2" =>"旅游/指南",
-                  "3" => "运动/极限",
-                  "4" => "汽车/安全",
-                  "5" => "奇趣/科技",
-                  "6" => "科技/产品",
-                  "7" => "时尚/经典",
-                  "8" => "财经",
-                  "9" => "亲子/情感",
-                  "10" => "读书/教育",
-                  "11" => "生活/烦恼",
-                  "12" => "公益/社会",
-                  "13" => "app",
-                  "14" => "公益/设计");
-
-
-    $i = 1;
-    $page = 0;
-    for ($i=1; $i<15; $i+=1){
-    	// echo "<br/>".$class[$i].$i."正在获取...<br/>";
-    	for ($page=0; $page< 500; $page+=10){ 
-           
-           //url片段
-           $geturl = "http://115.28.54.40:8080/beautyideaInterface/api/v1/resources/getResourcesByModulesId?";
-           $pagesize = "&pageSize=10";
-           $imieid = "&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
-           $modulesid = "&modulesId=".$i;
-           $pageno = "pageNo=".$page;
-
-           // echo $modulesid;
-           // echo $pageno;
-
-           //整合url
-           $url = $geturl.$pageno.$pagesize.$modulesid.$imieid;
-
-           //初始化
-           $curl = curl_init();
-
-          //设置抓取的url
-          curl_setopt($curl, CURLOPT_URL, $url);
-
-          //设置头文件的信息作为数据流输出
-          curl_setopt($curl, CURLOPT_HEADER, 0);
-
-          //设置获取的信息以文件流的形式返回，而不是直接输出。
-          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-          // echo $url;
-
-           //执行命令
-           $data = curl_exec($curl);
-
-           //关闭URL请求
-           curl_close($curl);
-
-           //创建json文件
-           $file = fopen("json/json"."-".$i."-".$page.".json", "w") or die("创建文件失败!");
-
-           //写入json
-           fwrite($file, $data);
-
-           //关闭文件
-           fclose($file);
-           
-           //文件目录
-           $filepath = "json/json"."-".$i."-".$page.".json";
-
-           //判断文件是否写入
-           if (file_exists($filepath)) {
-
-               echo $class[$i]."第".$i."页信息获取成功!<br/>";
-
-           } else echo "失败!";
-
-           //判断返回数据的长度
-           $len = strlen($data);
-
-          //判断返回值，如果小于默认值，则赋值page使循环中止
-    	   if ($len<20) {
-    		 $page = 500;    		
-    		}
-
-          sleep(5);
-    	}
-    }
+<?php 
+require_once('./inc.php');
 ?>
-</body>
-</html>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+        <!-- 标题 -->
+    <div class="navbar-header">
+      <!-- <img src="img/ico2.png" alt="" width="320px" height="50px"> -->
+      <a class="navbar-brand" href="#">最美创意</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="./">首页</a></li>
+        <li><a href="album.php">专辑</a></li>
+        <li><a href="modules.php">分类</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="输入热词、分类、关键字" name="condition">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+      <li><a href="about.php">关于</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 内容 -->
+<?php 
+      @ $page = $_GET['page'];
+      // echo "hd".$page;
+      $name = 'allr';
+      echodata($name,$page);
+ ?>
+<div class="row">
+<?php
+     $name = 'all';
+     @ $page = $_GET['page'];
+     if (empty($page)) {
+        $page = 1;
+     }
+     // @ $page = $_GET['page']|1;
+     // echo "get".$page;
+     $url = geturl($name,$page);
+     // echo $url;
+     $obj = getdata($url);
+     // echo $data;
+     // $obj = json_decode($data);
+     // print_r($obj);
+     // $obj = object_array($obj);
+     // print_r($obj[resources][$i]);
+     $thumbnail = "http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/";
+     for ($i=0; $i <10 ; $i++) {
+       @ $objs = $obj[resources][$i];
+       @ $rsid = $objs[rsId];
+       @ $view = $objs[viewCount];
+       @ $comment = $objs[commentcount];
+       @ $duration = $objs[duration];
+       @ $title = $objs[title];
+       echo "<div class=\"col-md-6\">";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail.$rsid.".jpg\"></a>";
+       echo "<div class=\"info\">";
+       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
+       echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$comment."</h6></span>";
+       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
+       echo "<h6>".$title."</h6>";
+       echo "</div>";
+       echo "</div>";
+   }
+ ?>
+</div>
+<!-- 翻页 -->
+ <nav>
+  <ul class="pager">
+    <?php 
+     if ($page <= 1) {
+       echo "<li class=\"previous disabled\"><a href=\"#\">";
+     } else {
+      // $page = $page-1;
+       echo "<li class=\"previous\"><a href=\"./index.php?page=".$page."\">";
+     }
+     
+     ?>
+    <!-- <li class="previous disabled"><a href="#"> -->
+    <span aria-hidden="true">&larr;</span>上一页</a></li>
+    <?php 
+      $page = $page+1;
+      echo "<li class=\"next\"><a href=./index.php?page=".$page.">";
+     ?>
+    下一页 <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+</div>
+<?php require_once('inc/footer.php'); ?>
