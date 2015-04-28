@@ -1,0 +1,124 @@
+/*全局*/
+body{
+    /*width: 960px;*/
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 70px;
+}
+.center{
+	text-align: center;
+}
+/*导航条*/
+.navbar{
+    height: 50px;
+}
+
+/*幻灯片*/
+.container .carousel-inner .item img{
+	width: 1200px;
+	height: 600px;
+}
+.container .carousel-inner .item h6{
+	margin-top: -33px;
+	color: #fff;
+	font-size: 20px;
+	margin-left: 10px;
+}
+.container{
+	width: 1200px;
+}
+.carousel{
+	margin-bottom: 20px;
+}
+.carousel-indicators{
+	width: 100px; margin-left: 0px;
+	left: 1000px; margin-bottom: 0px; bottom: 10px;
+}
+/*.carousel-control{
+	height: 555px;
+}*/
+
+/*内容*/
+.col-md-6{
+    padding-bottom: 15px;
+}
+.row .col-md-6 img{
+    width: 100%;
+    height: 300px;
+}
+.row .col-md-6 .info{
+	margin-top: -40px;
+	margin-left: 10px;
+}
+.row .col-md-6 span{
+    color: #fff;
+    width: 60px; 
+    height: 15px;
+    font-size: 12px;
+}
+.row .col-md-6 span h6{
+	display : inline;
+	font-size: 16px;
+	padding-left: 3px;
+	margin-left: 0px;
+}
+.row .col-md-6 h6{
+	margin-top: 0px; 
+	margin-bottom: 0px; 
+	color: #fff;
+	margin-left: -5px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*专辑*/
+.row .col-md-4 img{
+	width: 100%;
+	height: 280px;
+}
+.col-md-4{
+    padding-bottom: 15px;
+}
+.row .col-md-4 .info{
+	margin-top: -40px;
+	margin-left: 10px;
+}
+.row .col-md-4 span{
+    color: #fff;
+    width: 60px; 
+    height: 15px;
+    font-size: 12px;
+}
+.row .col-md-4 span h6{
+	display : inline;
+	font-size: 16px;
+	padding-left: 3px;
+	margin-left: 0px;
+}
+.row .col-md-4 h6{
+	margin-top: 0px; 
+	margin-bottom: 0px; 
+	color: #fff;
+	margin-left: -5px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*翻页*/
+.container nav .paper{
+	width: 800px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 40px;
+}
+
+
+/*脚部*/
+.footer{
+	display: block;
+	text-align: center;
+	font-size: 12px;
+    
+}
