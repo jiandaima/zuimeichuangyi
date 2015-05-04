@@ -13,15 +13,34 @@ require_once('./inc.php');
       <ul class="nav navbar-nav">
         <li class="active"><a href="./">首页</a></li>
         <li><a href="album.php">专辑</a></li>
-        <li><a href="modules.php">分类</a></li>
+        <!-- <a href="modules.php">分类</a> -->
+        <li class="dropdown">
+        <a id="drop1" class="dropdown-toggle" aria-expanded="false" role="button" aria-haspopup="true" data-toggle="dropdown" href="#">分类
+        <span class="caret"></span>
+        </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+           <li><a href="">游戏/动漫</a></li>
+           <li><a href="">旅游/指南</a></li>
+           <li><a href="">运动/极限</a></li>
+           <li><a href="">汽车/安全</a></li>
+           <li><a href="">奇趣/科技</a></li>
+           <li><a href="">科技/产品</a></li>
+           <li><a href="">时尚/经典</a></li>
+           <li><a href="">亲子/情感</a></li>
+           <li><a href="">读书/教育</a></li>
+           <li><a href="">生活/烦恼</a></li>
+           <li><a href="">公益/社会</a></li>
+           <li><a href="">公益/设计</a></li>
+          </ul>
+         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
+<!--       <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入热词、分类、关键字" name="condition">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form>
+      </form> -->
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -59,12 +78,14 @@ require_once('./inc.php');
        @ $comment = $objs[commentcount];
        @ $duration = $objs[duration];
        @ $title = $objs[title];
+       @ $modulesid = $objs[modules][modulesId];
        echo "<div class=\"col-md-6\">";
        echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail.$rsid.".jpg\"></a>";
        echo "<div class=\"info\">";
        echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
        echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$comment."</h6></span>";
        echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
+       echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$class[$modulesid]."</h6></span>";
        echo "<h6>".$title."</h6>";
        echo "</div>";
        echo "</div>";

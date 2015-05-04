@@ -16,14 +16,22 @@ require_once('inc.php');
         <li class="active"><a href="modules.php">分类</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <form class="navbar-form navbar-left" role="search">
+<!--       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form>
+      </form> -->
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<!-- 内容 -->
+
+
+
+
+<!-- 脚步 -->
+<?php require_once('inc/footer.php'); ?>

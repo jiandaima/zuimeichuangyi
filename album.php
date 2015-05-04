@@ -16,12 +16,12 @@ require_once('inc.php');
         <li><a href="modules.php">分类</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <form class="navbar-form navbar-left" role="search">
+<!--       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form>
+      </form> -->
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -136,7 +136,7 @@ require_once('inc.php');
       echo "<div class=\"info\">";
       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$viewcount."</h6></span>";
       echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";
-      echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6></h6>"._t($duration)."</span>";
+      echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
       echo "<h6>".$title."</h6>";
       echo "</div>";
       echo "</div>";
