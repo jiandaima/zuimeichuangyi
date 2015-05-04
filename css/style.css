@@ -13,6 +13,10 @@ body{
     height: 50px;
 }
 
+/*下拉菜单*/
+/*.dropdown-menu li{
+   width: 96px;
+}*/
 /*幻灯片*/
 .container .carousel-inner .item img{
 	width: 1200px;
@@ -56,6 +60,15 @@ body{
     height: 15px;
     font-size: 12px;
 }
+.row .col-md-6 .info span:nth-child(2){
+    width: 35px; 
+}
+.row .col-md-6 .info span:nth-child(4){
+	width: 70px; height: 20px;
+}
+.row .col-md-6 .info span:nth-child(4) h6{
+    font-size: 12px;
+}
 .row .col-md-6 span h6{
 	display : inline;
 	font-size: 16px;
@@ -66,7 +79,7 @@ body{
 	margin-top: 0px; 
 	margin-bottom: 0px; 
 	color: #fff;
-	margin-left: -5px;
+	/*margin-left: px;*/
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -89,6 +102,10 @@ body{
     width: 60px; 
     height: 15px;
     font-size: 12px;
+    margin-left: 2px;
+}
+.row .col-md-4 .info span:nth-child(2){
+    width: 35px; 
 }
 .row .col-md-4 span h6{
 	display : inline;
@@ -100,7 +117,7 @@ body{
 	margin-top: 0px; 
 	margin-bottom: 0px; 
 	color: #fff;
-	margin-left: -5px;
+	/*margin-left: 0px;*/
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
