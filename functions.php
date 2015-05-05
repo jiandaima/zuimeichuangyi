@@ -56,7 +56,7 @@
 }
 
 
-     $class = array("1" =>"游戏/动漫",
+   $class = array("1" =>"游戏/动漫",
                   "2" =>"旅游/指南",
                   "3" => "运动/极限",
                   "4" => "汽车/安全",
@@ -71,6 +71,19 @@
                   "13" => "app",
                   "14" => "公益/设计");
 
+
+function getKey($arr, $value) {
+ if(!is_array($arr)) return null;
+ foreach($arr as $k =>$v) {
+  $return = getKey($v, $value);
+  if($v == $value){
+   return $k;
+  }
+  if(!is_null($return)){
+   return $return;
+  }
+ }
+}
 
 
 

@@ -14,6 +14,12 @@ body{
 }
 
 /*下拉菜单*/
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #8e8e8e;
+}
 /*.dropdown-menu li{
    width: 96px;
 }*/

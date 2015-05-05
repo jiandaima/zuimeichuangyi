@@ -13,15 +13,34 @@ require_once('inc.php');
       <ul class="nav navbar-nav">
         <li><a href="index.php">首页</a></li>
         <li><a href="album.php">专辑</a></li>
-        <li><a href="modules.php">分类</a></li>
+        <!-- <li><a href="modules.php">分类</a></li> -->
+        <li class="dropdown">
+        <a id="drop1" class="dropdown-toggle" aria-expanded="false" role="button" aria-haspopup="true" data-toggle="dropdown" href="#">分类
+        <span class="caret"></span>
+        </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+           <li><a href="modules.php?modulesname=游戏/动漫">游戏/动漫</a></li>
+           <li><a href="modules.php?modulesname=旅游/指南">旅游/指南</a></li>
+           <li><a href="modules.php?modulesname=运动/极限">运动/极限</a></li>
+           <li><a href="modules.php?modulesname=汽车/安全">汽车/安全</a></li>
+           <li><a href="modules.php?modulesname=奇趣/科技">奇趣/科技</a></li>
+           <li><a href="modules.php?modulesname=科技/产品">科技/产品</a></li>
+           <li><a href="modules.php?modulesname=时尚/经典">时尚/经典</a></li>
+           <li><a href="modules.php?modulesname=亲子/情感">亲子/情感</a></li>
+           <li><a href="modules.php?modulesname=读书/教育">读书/教育</a></li>
+           <li><a href="modules.php?modulesname=生活/烦恼">生活/烦恼</a></li>
+           <li><a href="modules.php?modulesname=公益/社会">公益/社会</a></li>
+           <li><a href="modules.php?modulesname=公益/设计">公益/设计</a></li>
+          </ul>
+         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <form class="navbar-form navbar-left" role="search">
+<!--       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form>
+      </form> -->
       <li class="active"><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -29,14 +48,11 @@ require_once('inc.php');
 </nav>
 <div class="container center">
   <hr>
-  <h6>说点什么呢</h6>
-  <h6>这是根据一个app做的</h6>
-  <h6>数据都是别人的，不是我原创</h6>
+  <h6>说点什么呢，我只是想练练手而已</h6>
   <h6>如果有什么问题</h6>
   <h6>证明网站还没有做完</h6>
   <h6>我也没办法，一直是我一个人哦</h6>
   <h6>如果你喜欢，请支持app哦</h6>
-  <h6>最美创意</h6>
   <h6><img src="img/erwei.png" alt=""></h6>
     <div class="ds-thread" data-thread-key="1" data-title="about" data-url="zmcy.yangzhongchao.com"></div>
 <!-- 多说评论框 end -->
