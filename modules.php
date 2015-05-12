@@ -43,7 +43,7 @@ require_once('inc.php');
       </form>
       <li><a href="about.php">关于</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </div>
   </div><!-- /.container-fluid -->
 </nav>
 
@@ -106,15 +106,15 @@ require_once('inc.php');
      if ($page < 1) {
        echo "<li class=\"previous disabled\">";
      } else {
-       $page = $page-1; 
+       // $pagep = $page-1; 
        echo "<li class=\"previous\"><a href=\"./modules.php?modulesname=".$modulesname."&page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
      }?>
     </a></li>
     <?php 
-      $page = $page+2;
+      $pagen = $page+2;
       if ($arrlen < 10) {
       echo "<li class=\"next disabled\">";
-    } else echo "<li class=\"next\"><a href=./modules.php?modulesname=".$modulesname."&page=".$page.">下一页<span aria-hidden=\"true\">&rarr;";
+    } else echo "<li class=\"next\"><a href=./modules.php?modulesname=".$modulesname."&page=".$pagen.">下一页<span aria-hidden=\"true\">&rarr;";
      ?>
      </span></a></li>
   </ul>
