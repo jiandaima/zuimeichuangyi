@@ -130,7 +130,7 @@ require_once('inc.php');
       echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
       echo "<div class=\"info\">";
       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$viewcount."</h6></span>";
-      echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";
+      // echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";
       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
       echo "<h6>".$title."</h6>";
       echo "</div>";

@@ -1,11 +1,11 @@
 /*全局*/
 body{
-    /*width: 960px;*/
     margin-right: auto;
     margin-left: auto;
     padding-top: 70px;
-    font-family: "Helvetica","Hiragino Sans GB","Microsoft Yahei",sans-serif
+    font-family: "Microsoft YaHei",'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 .center{
 	text-align: center;
 }
@@ -46,9 +46,6 @@ body{
 	width: 100px; margin-left: 0px;
 	left: 1000px; margin-bottom: 0px; bottom: 10px;
 }
-/*.carousel-control{
-	height: 555px;
-}*/
 
 /*内容*/
 .col-xs-6{
@@ -64,7 +61,6 @@ body{
 .row .col-xs-6 .info{
 	margin-top: -40px;
 	margin-left: 10px;
-	/*background-color: #000;*/
 }
 .row .col-xs-6 span{
     color: #fff;
@@ -73,17 +69,18 @@ body{
     font-size: 12px;
 }
 .row .col-xs-6 .info span:nth-child(2){
-    width: 70px; 
+    width: 64px; 
 }
 .row .col-xs-6 .info span:nth-child(1){
-	width: 70px; height: 20px;
+	width: 78px; 
+	height: 20px;
 }
 .row .col-xs-6 .info span:nth-child(1) h6{
     font-size: 12px;
 }
 .row .col-xs-6 span h6{
 	display : inline;
-	font-size: 16px;
+	font-size: 13px;
 	padding-left: 3px;
 	margin-left: 0px;
 }
@@ -124,7 +121,7 @@ body{
 }
 .row .col-xs-4 span h6{
 	display : inline;
-	font-size: 16px;
+	font-size: 13px;
 	padding-left: 3px;
 	margin-left: 0px;
 }
