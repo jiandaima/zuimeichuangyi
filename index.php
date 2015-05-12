@@ -35,43 +35,82 @@ require_once('./inc.php');
          </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-<!--       <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
+      <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="输入热词、分类、关键字" name="condition">
+          <input type="text" class="form-control" placeholder="热词、分类、关键字" name="condition">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form> -->
+      </form>
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!-- 内容 -->
+<!-- 幻灯片 -->
 <?php 
-      @ $page = $_GET['page'];
-      // echo "hd".$page;
-      $name = 'allr';
-      echodata($name,$page);
+  @ $page = $_GET['page'];
+  echo "<div class=\"container\">";
+  if ($page > 1) {
+     echo "<div class=\"alert alert-success\">";
+     echo "<h4 class=\"text-center\" style=\"margin-bottom: 0px;\">";
+     echo "当前在第 ".$page." 页</h4></div>";
+     echo "<div id=\"myCarousel\" class=\"carousel slide\" style=\"display:none;\">";
+  } else {
+  echo "<div id=\"myCarousel\" class=\"carousel slide\">";
+  }
+?>
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+  </ol>
+  <!-- 幻灯片内容 -->
+  <div class="carousel-inner">
+   <?php 
+     $url = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
+     $obj = getdata($url);
+    for ($i=0; $i <5 ; $i++) {
+       @ $objs = $obj[album][$i][resourceses][0];
+       @ $rsid = $objs[rsId];
+       @ $title = $objs[title];
+       @ $thumbnail = $objs[thumbnail];
+       if ($i == 0) {
+         echo "<div class=\"item active\">";
+       } else {
+         echo "<div class=\"item\">";
+       }
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
+       echo "<h6>".$title."</h6>";
+       echo "</div>";   
+} 
  ?>
+</div>
+  <!-- 幻灯片按钮 -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+</div>
+
+<!-- 内容 -->
 <div class="row">
+
 <?php
-     $name = 'all';
      @ $page = $_GET['page'];
-     if (empty($page)) {
-        $page = 1;
-     }
-     // @ $page = $_GET['page']|1;
-     // echo "get".$page;
-     $url = geturl($name,$page);
+    if (empty($page)) {
+         $page = 0;
+       } else{
+        $page = $page -1;
+      }
+     $host = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/resources/getResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';               //服务器
+     $pageno = "&pageNo=".$page*10;
+     $url = $host.$pageno;
      // echo $url;
      $obj = getdata($url);
-     // echo $data;
-     // $obj = json_decode($data);
-     // print_r($obj);
-     // $obj = object_array($obj);
-     // print_r($obj[resources][$i]);
-     $thumbnail = "http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/";
-     for ($i=0; $i <10 ; $i++) {
+     @ $arrlen = count($obj[resources]);
+     for ($i=0; $i <$arrlen; $i++) {
        @ $objs = $obj[resources][$i];
        @ $rsid = $objs[rsId];
        @ $view = $objs[viewCount];
@@ -79,13 +118,13 @@ require_once('./inc.php');
        @ $duration = $objs[duration];
        @ $title = $objs[title];
        @ $modulesid = $objs[modules][modulesId];
-       echo "<div class=\"col-md-6\">";
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail.$rsid.".jpg\"></a>";
+       @ $thumbnail = $objs[thumbnail];
+       echo "<div class=\"col-xs-6\">";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\" style:></a>";
        echo "<div class=\"info\">";
-       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$comment."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
        echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$class[$modulesid]."</h6></span>";
+       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
+       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
        echo "<h6>".$title."</h6>";
        echo "</div>";
        echo "</div>";
@@ -96,21 +135,20 @@ require_once('./inc.php');
  <nav>
   <ul class="pager">
     <?php 
-     if ($page <= 1) {
-       echo "<li class=\"previous disabled\"><a href=\"#\">";
+     if ($page < 1) {
+       echo "<li class=\"previous disabled\">";
      } else {
       // $page = $page-1;
-       echo "<li class=\"previous\"><a href=\"./index.php?page=".$page."\">";
-     }
-     
-     ?>
-    <!-- <li class="previous disabled"><a href="#"> -->
-    <span aria-hidden="true">&larr;</span>上一页</a></li>
+       echo "<li class=\"previous\"><a href=\"./index.php?page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
+     }?>
+    </a></li>
     <?php 
-      $page = $page+1;
-      echo "<li class=\"next\"><a href=./index.php?page=".$page.">";
+      $page = $page+2;
+      if ($arrlen < 10) {
+         echo "<li class=\"next disabled\">";
+      } else echo "<li class=\"next\"><a href=./index.php?page=".$page.">下一页";
      ?>
-    下一页 <span aria-hidden="true">&rarr;</span></a></li>
+   <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
 </nav>
 </div>

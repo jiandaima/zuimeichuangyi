@@ -35,12 +35,12 @@ require_once('inc.php');
          </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-<!--       <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
+          <input type="text" class="form-control" placeholder="热词、分类、关键字" name="condition">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form> -->
+      </form>
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -49,11 +49,9 @@ require_once('inc.php');
 <!-- 幻灯片 -->
 <?php
    @ $page = $_GET['page'];
-   // echo "hd".$page;
-   @ $name = 'albumr';
     echo "<div class=\"container\">";
   if ($page > 1) {
-     echo "<div id=\"myCarousel\" class=\"carousel slide\" style:\"display:none;\">";     
+     echo "<div id=\"myCarousel\" class=\"carousel slide\" style=\"display:none;\">";     
   } else {
   echo "<div id=\"myCarousel\" class=\"carousel slide\">";
   }
@@ -68,28 +66,26 @@ require_once('inc.php');
   <!-- 内容 -->
   <div class="carousel-inner">
    <?php 
-     // $name = 'allr';
-     $url = geturl($name,$page);
-     // echo $url;
+     $url = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
+     if (empty($page)) {
+        $page = 0;
+     } else{
+      $page = $page -1;
+     }
+     $pageno = "&pageNo=".$page*10;
      $obj = getdata($url);
-     // echo $data;
-     // $obj = json_decode($data);
-     // // print_r($obj);
-     // $obj = object_array($obj);
-     // print_r($obj[album][0][resourceses]);
-     // print_r($obj[album][0]);
-     $thumbnail = "http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/";
-     // http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/XNzYzNzQxODA0.jpg
     for ($i=0; $i <5 ; $i++) {
        @ $objs = $obj[album][$i];
        @ $rsid = $objs[resourceses][0][rsId];
        @ $title = $objs[resourceses][0][title];
+       @ $thumbnail = $objs[resourceses][0][thumbnail];
+
        if ($i == 0) {
          echo "<div class=\"item active\">";
        } else {
          echo "<div class=\"item\">";
        }
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail.$rsid.".jpg\"></a>";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
        echo "<h6>".$title."</h6>";
        echo "</div>";    
    }
@@ -104,26 +100,11 @@ require_once('inc.php');
 
 <!-- 专辑 -->
 <?php 
-     $name = 'album';
-     @ $page = $_GET['page'];
-     if (empty($page)) {
-        $page = 0;
-     } else{
-      $page = $page -1;
-     }
-     // @ $page = $_GET['page']|1;
-     // echo "get".$page;
-     $url = geturl($name,$page);
-     // echo $url;
+     $host = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumHotResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
+     $url = $host.$pageno;
      $obj = getdata($url);
-     // echo $data;
-     // $obj = json_decode($data);
-     // print_r($obj);
-     // $obj = object_array($obj);
-     // print_r($obj[resources][$i]);
      @ $arralbum = $obj[album];
      @ $arrlen = count($arralbum);
-     @ $thumbnail = "http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/";
   for ($i=0; $i <$arrlen; $i++) {
      @ $objs = $obj[album][$i];
      // print_r($objs);
@@ -144,14 +125,9 @@ require_once('inc.php');
       @ $viewcount = $resourceses[$b][viewCount];
       @ $commentcount = $resourceses[$b][commentcount];
       @ $title =  $resourceses[$b][title];
-
-      // echo $rsid;
-      // echo $duration;
-      // echo $viewcount;
-      // echo $commentcount;
-      // echo 
-      echo "<div class=\"col-md-4\">";
-      echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail.$rsid.".jpg\"></a>";
+      @ $thumbnail = $resourceses[$b][thumbnail];
+      echo "<div class=\"col-xs-4\">";
+      echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
       echo "<div class=\"info\">";
       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$viewcount."</h6></span>";
       echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";
@@ -166,50 +142,23 @@ require_once('inc.php');
 }
 
  ?>
-<!-- 
-
-
-       <div class="col-md-4">
-       <?php  
-       // echo "<a target=\"_blank\" href=\""."./play.php?rsid=\"><img src=\"http://202.10.79.118:8080/DTAppInterface/upload_files/video_thumb/XODcwOTU1Njc2.jpg\"></a>";
-       // echo "<div class=\"info\">";
-       // echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>411</h6></span>";
-       // echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>5641</h6></span>";
-       // echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6></h6>4:45</span>";
-       // echo "<h6>闪闪的视觉错觉Incredible Spinning Illusion</h6>";
-       // echo "</div>";
-       ?>
-      
-       </div>
-       <div class="col-md-4">
-
-       </div>
-       <div class="col-md-4">
-
-       </div>
-      
-
- -->
-
  <!-- 翻页 -->
  <nav>
   <ul class="pager">
     <?php 
-     if ($page <= 1) {
-       echo "<li class=\"previous disabled\"><a href=\"#\">";
+     if ($page < 1) {
+       echo "<li class=\"previous disabled\">";
      } else {
-      $page = $page-1;
-       echo "<li class=\"previous\"><a href=\"./album.php?page=".$page."\">";
-     }
-     
-     ?>
-    <!-- <li class="previous disabled"><a href="#"> -->
-    <span aria-hidden="true">&larr;</span>上一页</a></li>
+       echo "<li class=\"previous\"><a href=\"./album.php?page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
+     }?>
+    </a></li>
     <?php 
       $page = $page+2;
-      echo "<li class=\"next\"><a href=./album.php?page=".$page.">";
+      if ($arrlen < 10) {
+         echo "<li class=\"next disabled\">";
+      } else echo "<li class=\"next\"><a href=./album.php?page=".$page.">下一页<span aria-hidden=\"true\">&rarr;</span>";
      ?>
-    下一页 <span aria-hidden="true">&rarr;</span></a></li>
+   </li>
   </ul>
 </nav>
 </div>

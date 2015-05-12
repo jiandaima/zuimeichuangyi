@@ -1,12 +1,13 @@
 <?php 
 require_once('inc/header.php');
+require_once('./functions.php');
 ?>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
         <!-- 标题 -->
     <div class="navbar-header">
       <!-- <img src="img/ico2.png" alt="" width="320px" height="50px"> -->
-      <a class="navbar-brand" href="#">最美创意</a>
+      <a class="navbar-brand" href="http://zmcy.yangzhongchao.com">最美创意</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,32 +36,51 @@ require_once('inc/header.php');
          </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-<!--       <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="search.php" method="get">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
+          <input type="text" class="form-control" placeholder="热词、分类、关键字" name="condition">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form> -->
+      </form>
       <li><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container" style="width:1170px;">
-<embed
 <?php 
-
-$rsid = $_GET['rsid'];
-echo "src=\"http://player.youku.com/player.php/sid/".$rsid."/v.swf\"";
+@ $rsid = $_GET['rsid'];
+@ $ykurl = "https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=".$rsid;
+      // echo $ykurl;
+      $curl = curl_init();                               
+      curl_setopt($curl, CURLOPT_URL, $ykurl);           
+      curl_setopt($curl, CURLOPT_HEADER, 0);             
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE); // https请求 不验证证书和hosts
+      // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);     
+      $data = curl_exec($curl);                          
+      curl_close($curl);
+      $data = json_decode($data);
+      // print_r($data);
+      $ykdata = object_array($data);   
+// print_r($ykdata);
+@ $title = $ykdata[title];
+@ $description = $ykdata[description];
+// echo $title;
+echo "<h4>".$title."</h4>";
+echo "<embed src=\"http://player.youku.com/player.php/sid/".$rsid."/v.swf\"";
  ?>
 play="true"
 allowFullScreen="true" 
 quality="high" 
 width="1140"
 height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"
-flashvars="isShowRelatedVideo=false&showAd=0&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"
+flashvars="isShowRelatedVideo=false&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"
 </embed>
+<?php echo "<h4>".$description."</h4>";?>
+</div>
 <?php require_once('inc/footer.php'); ?>
+
 
 
 

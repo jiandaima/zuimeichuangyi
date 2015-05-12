@@ -6,12 +6,12 @@ require_once('inc.php');
         <!-- 标题 -->
     <div class="navbar-header">
       <!-- <img src="img/ico2.png" alt="" width="320px" height="50px"> -->
-      <a class="navbar-brand" href="#">最美创意</a>
+      <a class="navbar-brand" href="http://zmcy.yangzhongchao.com">最美创意</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">首页</a></li>
+        <li><a href="./">首页</a></li>
         <li><a href="album.php">专辑</a></li>
         <!-- <li><a href="modules.php">分类</a></li> -->
         <li class="dropdown">
@@ -35,12 +35,12 @@ require_once('inc.php');
          </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-<!--       <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="输入热词、分类、关键字">
+          <input type="text" class="form-control" placeholder="热词、分类、关键字" name="condition">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form> -->
+      </form>
       <li class="active"><a href="about.php">关于</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -48,12 +48,16 @@ require_once('inc.php');
 </nav>
 <div class="container center">
   <hr>
-  <h6>说点什么呢，我只是想练练手而已</h6>
-  <h6>如果有什么问题</h6>
-  <h6>证明网站还没有做完</h6>
-  <h6>我也没办法，一直是我一个人哦</h6>
-  <h6>如果你喜欢，请支持app哦</h6>
-  <h6><img src="img/erwei.png" alt=""></h6>
+  <h5>说点什么呢，今天网站算是完成了(2015-05-12)</h5>
+  <h5>算是自己独立完成的第一个网站<a href="https://github.com/yangzhongchao1011/zuimeichuangyi">源码</a></h5>
+  <h5>当然，难免有些bug和不足</h5>
+  <h5>如果有什么问题，请在这里留言</h5>
+  <h5>这里的数据来自移动端app《最美创意》</h5>
+  <h5>如果你喜欢，请支持app哦</h5>
+  <h5>(貌似下面的多说评论框老是刷新不出)</h5>
+  <h5>欢迎来我的博客<a href="http://www.yangzhongchao.com">草原</a></h5>
+  <h5><img src="img/erwei.png" alt="扫一下！！"></h5>
+  <hr>
     <div class="ds-thread" data-thread-key="1" data-title="about" data-url="zmcy.yangzhongchao.com"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
