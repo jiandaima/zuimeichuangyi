@@ -57,3 +57,15 @@
     }
   }
 }
+
+   function eximg($imgpath){
+       if( @fopen( $imgpath, 'r' ) ) 
+       { 
+         return $imgpath;
+       } 
+       else 
+       {
+         $imgpath = "http://img.yangzhongchao.com/error.png";
+         return $imgpath;
+       }
+   }

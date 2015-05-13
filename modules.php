@@ -87,7 +87,7 @@ require_once('inc.php');
        @ $thumbnail = $objs[thumbnail];
        @ $modulesname = $class[$modulesid];
        echo "<div class=\"col-xs-6\">";
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
        echo "<div class=\"info\">";
        echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$modulesname."</h6></span>";
        echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";

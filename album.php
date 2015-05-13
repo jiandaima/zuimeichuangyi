@@ -85,7 +85,7 @@ require_once('inc.php');
        } else {
          echo "<div class=\"item\">";
        }
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
        echo "<h6>".$title."</h6>";
        echo "</div>";    
    }
@@ -107,11 +107,8 @@ require_once('inc.php');
      @ $arrlen = count($arralbum);
   for ($i=0; $i <$arrlen; $i++) {
      @ $objs = $obj[album][$i];
-     // print_r($objs);
      @ $resourceses = $objs[resourceses];
-     // print_r($resourceses);
      @ $albumname = $objs[albumName];
-    // echo "name".$albumname;
       echo "<div class=\"panel panel-default\">";
       echo "<div class=\"panel-heading\">";
       echo "<h3 class=\"panel-title\">".$albumname."</h3>";
@@ -119,7 +116,6 @@ require_once('inc.php');
       echo "<div class=\"panel-body\">";
       echo "<div class=\"row\">";
     for ($b=0; $b <3 ; $b++) { 
-      // @ $resourceses = $objs[resourceses][$i][$b][resourceses];
       @ $rsid = $resourceses[$b][rsId];
       @ $duration = $resourceses[$b][duration];
       @ $viewcount = $resourceses[$b][viewCount];
@@ -127,7 +123,7 @@ require_once('inc.php');
       @ $title =  $resourceses[$b][title];
       @ $thumbnail = $resourceses[$b][thumbnail];
       echo "<div class=\"col-xs-4\">";
-      echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
+      echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
       echo "<div class=\"info\">";
       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$viewcount."</h6></span>";
       // echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";

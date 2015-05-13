@@ -81,7 +81,7 @@ require_once('./inc.php');
        } else {
          echo "<div class=\"item\">";
        }
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\"></a>";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
        echo "<h6>".$title."</h6>";
        echo "</div>";   
 } 
@@ -120,7 +120,7 @@ require_once('./inc.php');
        @ $modulesid = $objs[modules][modulesId];
        @ $thumbnail = $objs[thumbnail];
        echo "<div class=\"col-xs-6\">";
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".$thumbnail."\" style:></a>";
+       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\" style:></a>";
        echo "<div class=\"info\">";
        echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$class[$modulesid]."</h6></span>";
        echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";

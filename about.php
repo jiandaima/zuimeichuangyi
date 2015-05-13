@@ -48,15 +48,12 @@ require_once('inc.php');
 </nav>
 <div class="container center">
   <hr>
-  <h5>说点什么呢，今天网站算是完成了(2015-05-12)</h5>
-  <h5>算是自己独立完成的第一个网站<a href="https://github.com/yangzhongchao1011/zuimeichuangyi">源码</a></h5>
-  <h5>当然，难免有些bug和不足</h5>
-  <h5>如果有什么问题，请在这里留言</h5>
-  <h5>这里的数据来自移动端app《最美创意》</h5>
-  <h5>如果你喜欢，请支持app哦</h5>
-  <h5>(貌似下面的多说评论框老是刷新不出)</h5>
-  <h5>欢迎来我的博客<a href="http://www.yangzhongchao.com">草原</a></h5>
-  <h5><img src="img/erwei.png" alt="扫一下！！"></h5>
+  <h6>说点什么呢，我只是想练练手而已</h6>
+  <h6>如果有什么问题</h6>
+  <h6>证明网站还没有做完</h6>
+  <h6>我也没办法，一直是我一个人哦</h6>
+  <h6>如果你喜欢，请支持app哦</h6>
+  <h6><img src="img/erwei.png" alt=""></h6>
   <hr>
     <div class="ds-thread" data-thread-key="1" data-title="about" data-url="zmcy.yangzhongchao.com"></div>
 <!-- 多说评论框 end -->
@@ -66,7 +63,7 @@ var duoshuoQuery = {short_name:"zmcy"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
     ds.charset = 'UTF-8';
     (document.getElementsByTagName('head')[0] 
      || document.getElementsByTagName('body')[0]).appendChild(ds);
