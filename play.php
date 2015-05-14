@@ -49,35 +49,27 @@ require_once('./functions.php');
 </nav>
 <div class="container" style="width:1170px;">
 <?php 
-@ $rsid = $_GET['rsid'];
-@ $ykurl = "https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=".$rsid;
-      // echo $ykurl;
-      $curl = curl_init();                               
-      curl_setopt($curl, CURLOPT_URL, $ykurl);           
-      curl_setopt($curl, CURLOPT_HEADER, 0);             
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE); // https请求 不验证证书和hosts
-      // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);     
-      $data = curl_exec($curl);                          
-      curl_close($curl);
-      $data = json_decode($data);
-      // print_r($data);
-      $ykdata = object_array($data);   
-// print_r($ykdata);
-@ $title = $ykdata[title];
-@ $description = $ykdata[description];
-// echo $title;
-echo "<h4>".$title."</h4>";
-echo "<embed src=\"http://player.youku.com/player.php/sid/".$rsid."/v.swf\"";
- ?>
-play="true"
-allowFullScreen="true" 
-quality="high" 
-width="1140"
-height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"
-flashvars="isShowRelatedVideo=false&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"
-</embed>
-<?php echo "<h4>".$description."</h4>";?>
+      @ $rsid = $_GET['rsid'];
+      @ $ykurl = "https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=".$rsid;
+      $ykdata = getdata($ykurl);   
+      @ $title = $ykdata[title];
+      @ $description = $ykdata[description];
+      // echo $title;
+      echo "<h4>".$title."</h4>";
+      echo "<embed src=\"http://player.youku.com/player.php/sid/".$rsid."/v.swf\"";
+       ?>
+      play="true"
+      allowFullScreen="true" 
+      quality="high" 
+      width="1140"
+      height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"
+      flashvars="isShowRelatedVideo=false&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"
+      </embed>
+<?php 
+    if (empty($description)) {
+      $description = '没有描述';
+}
+echo "<h5>描述：".$description."</h5>";?>
 </div>
 <?php require_once('inc/footer.php'); ?>
 
