@@ -1,4 +1,5 @@
-<?php 
+<?php
+error_reporting(E_ALL & ~E_NOTICE); 
 require_once('inc.php');
 ?>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -52,17 +53,16 @@ require_once('inc.php');
 <div class="alert alert-success">
 <h4 class="text-center" style="margin-bottom: 0px;">当前分类是:
 <?php 
-   @ $modulesname = $_GET['modulesname'];
-   @ $page = $_GET['page'];
-   echo $modulesname;
-   if ($page > 1) {
-   echo " 第".$page."页</h4>";
-   }
-   ?>
+    $modulesname = $_GET['modulesname'];
+    $page = $_GET['page'];
+    echo $modulesname;
+    if ($page > 1) {
+    echo ' 第' . $page . '页</h4>';
+    }
+?>
 </div>
 <div class="row">
 <?php 
-     
      $mouid = getkey($class,$modulesname);
      if (empty($page)) {
         $page = 0;
@@ -71,51 +71,50 @@ require_once('inc.php');
      }
      $pageno = $page*10;
      $host = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/resources/getResourcesByModulesId?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';
-     $url = $host."&pageNo=".$pageno."&modulesId=".$mouid;
-     // echo $url;
+     $url = $host . '&pageNo=' . $pageno . '&modulesId=' . $mouid;
      $obj = getdata($url);
-     @ $resources = $obj[resources];
-     @ $arrlen = count($resources);
+     $resources = $obj[resources];
+     $arrlen = count($resources);
      for ($i=0; $i <$arrlen; $i++) {
-       @ $objs = $resources[$i];
-       @ $rsid = $objs[rsId];
-       @ $view = $objs[viewCount];
-       @ $comment = $objs[commentcount];
-       @ $duration = $objs[duration];
-       @ $title = $objs[title];
-       @ $modulesid = $objs[modules][modulesId];
-       @ $thumbnail = $objs[thumbnail];
-       @ $modulesname = $class[$modulesid];
-       echo "<div class=\"col-xs-6\">";
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
-       echo "<div class=\"info\">";
-       echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$modulesname."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
-       echo "<h6>".$title."</h6>";
-       echo "</div>";
-       echo "</div>";
+       $objs = $resources[$i];
+       $rsid = $objs[rsId];
+       $view = $objs[viewCount];
+       $comment = $objs[commentcount];
+       $duration = $objs[duration];
+       $title = $objs[title];
+       $modulesid = $objs[modules][modulesId];
+       $thumbnail = $objs[thumbnail];
+       $modulesname = $class[$modulesid];
+       echo '<div class="col-xs-6">';
+       echo '<a target="_blank" href="./play.php?rsid=' . $rsid . '"><img src="' . eximg($thumbnail) . '"></a>';
+       echo '<div class="info">';
+       echo '<span class="glyphicon glyphicon glyphicon glyphicon-th"><h6>' . $modulesname . '</h6></span>';
+       echo '<span class="glyphicon glyphicon glyphicon-play" ><h6>' . $view . '</h6></span>';
+       echo '<span class="glyphicon glyphicon glyphicon-film"><h6>' . _t($duration) . '</h6></span>';
+       echo '<h6>' . $title . '</h6>';
+       echo '</div>';
+       echo '</div>';
    }
- ?>
+?>
 
 </div>
 
  <nav>
   <ul class="pager">
-    <?php 
+<?php 
      if ($page < 1) {
-       echo "<li class=\"previous disabled\">";
+       echo '<li class="previous disabled">';
      } else {
-       // $pagep = $page-1; 
-       echo "<li class=\"previous\"><a href=\"./modules.php?modulesname=".$modulesname."&page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
-     }?>
+       echo '<li class="previous"><a href="./modules.php?modulesname=' . $modulesname . '&page=' . $page . '><span aria-hidden="true">&larr;</span>上一页';
+     }
+?>
     </a></li>
-    <?php 
+<?php 
       $pagen = $page+2;
       if ($arrlen < 10) {
-      echo "<li class=\"next disabled\">";
-    } else echo "<li class=\"next\"><a href=./modules.php?modulesname=".$modulesname."&page=".$pagen.">下一页<span aria-hidden=\"true\">&rarr;";
-     ?>
+      echo '<li class="next disabled">';
+    } else echo '<li class="next"><a href=./modules.php?modulesname=' . $modulesname . '&page=' . $pagen . '>下一页<span aria-hidden="true">&rarr;';
+?>
      </span></a></li>
   </ul>
 </nav>

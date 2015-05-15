@@ -1,4 +1,5 @@
-<?php 
+<?php
+error_reporting(E_ALL & ~E_NOTICE); 
 require_once('inc/header.php');
 require_once('./functions.php');
 ?>
@@ -49,32 +50,20 @@ require_once('./functions.php');
 </nav>
 <div class="container" style="width:1170px;">
 <?php 
-      @ $rsid = $_GET['rsid'];
-      @ $ykurl = "https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=".$rsid;
+      $rsid = $_GET['rsid'];
+      $ykurl = 'https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=' . $rsid;
       $ykdata = getdata($ykurl);   
-      @ $title = $ykdata[title];
-      @ $description = $ykdata[description];
-      // echo $title;
-      echo "<h4>".$title."</h4>";
-      echo "<embed src=\"http://player.youku.com/player.php/sid/".$rsid."/v.swf\"";
-       ?>
-      play="true"
-      allowFullScreen="true" 
-      quality="high" 
-      width="1140"
-      height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"
-      flashvars="isShowRelatedVideo=false&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"
-      </embed>
+      $title = $ykdata[title];
+      $description = $ykdata[description];
+      echo '<h4>' . $title. '</h4>';
+      echo '<embed src="http://player.youku.com/player.php/sid/' . $rsid . '/v.swf"';
+?>
+      play="true" allowFullScreen="true" quality="high" width="1140" height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"
+      flashvars="isShowRelatedVideo=false&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false"</embed>
 <?php 
     if (empty($description)) {
       $description = '没有描述';
-}
-echo "<h5>描述：".$description."</h5>";?>
+     } echo '<h5>描述：' . $description. '</h5>';
+?>
 </div>
-<?php require_once('inc/footer.php'); ?>
-
-
-
-
-
-
+<?php require_once('inc/footer.php');?>

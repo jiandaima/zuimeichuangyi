@@ -1,4 +1,5 @@
 <?php 
+error_reporting(E_ALL & ~E_NOTICE); 
 require_once('inc.php');
 ?>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -48,14 +49,14 @@ require_once('inc.php');
 </nav>
 <!-- 幻灯片 -->
 <?php
-   @ $page = $_GET['page'];
-    echo "<div class=\"container\">";
-  if ($page > 1) {
-     echo "<div id=\"myCarousel\" class=\"carousel slide\" style=\"display:none;\">";     
-  } else {
-  echo "<div id=\"myCarousel\" class=\"carousel slide\">";
-  }
- ?>
+      @ $page = $_GET['page'];
+       echo '<div class="container">';
+     if ($page > 1) {
+        echo '<div id="myCarousel" class="carousel slide" style="display:none;">';     
+     } else {
+     echo '<div id="myCarousel" class="carousel slide">';
+     }
+    ?>
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -66,28 +67,28 @@ require_once('inc.php');
   <!-- 内容 -->
   <div class="carousel-inner">
    <?php 
-     $url = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
+     $url = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';
      if (empty($page)) {
         $page = 0;
      } else{
       $page = $page -1;
      }
-     $pageno = "&pageNo=".$page*10;
+     $pageno = '&pageNo=' . $page*10;
      $obj = getdata($url);
     for ($i=0; $i <5 ; $i++) {
-       @ $objs = $obj[album][$i];
-       @ $rsid = $objs[resourceses][0][rsId];
-       @ $title = $objs[resourceses][0][title];
-       @ $thumbnail = $objs[resourceses][0][thumbnail];
+       $objs = $obj[album][$i];
+       $rsid = $objs[resourceses][0][rsId];
+       $title = $objs[resourceses][0][title];
+       $thumbnail = $objs[resourceses][0][thumbnail];
 
        if ($i == 0) {
-         echo "<div class=\"item active\">";
+         echo '<div class="item active">';
        } else {
-         echo "<div class=\"item\">";
+         echo '<div class="item">';
        }
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
-       echo "<h6>".$title."</h6>";
-       echo "</div>";    
+       echo '<a target="_blank" href="./play.php?rsid=' . $rsid . '"><img src="' . eximg($thumbnail) . '"></a>';
+       echo '<h6>' . $title . '</h6>';
+       echo '</div>';    
    }
   ?>
   </div>
@@ -100,60 +101,58 @@ require_once('inc.php');
 
 <!-- 专辑 -->
 <?php 
-     $host = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumHotResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
-     $url = $host.$pageno;
-     $obj = getdata($url);
-     @ $arralbum = $obj[album];
-     @ $arrlen = count($arralbum);
+   $host = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumHotResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';
+    $url = $host.$pageno;
+    $obj = getdata($url);
+    $arralbum = $obj[album];
+    $arrlen = count($arralbum);
   for ($i=0; $i <$arrlen; $i++) {
-     @ $objs = $obj[album][$i];
-     @ $resourceses = $objs[resourceses];
-     @ $albumname = $objs[albumName];
-      echo "<div class=\"panel panel-default\">";
-      echo "<div class=\"panel-heading\">";
-      echo "<h3 class=\"panel-title\">".$albumname."</h3>";
-      echo "</div>";
-      echo "<div class=\"panel-body\">";
-      echo "<div class=\"row\">";
+    $objs = $obj[album][$i];
+    $resourceses = $objs[resourceses];
+    $albumname = $objs[albumName];
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading">';
+    echo '<h3 class="panel-title">' . $albumname . '</h3>';
+    echo '</div>';
+    echo '<div class="panel-body">';
+    echo '<div class="row">';
     for ($b=0; $b <3 ; $b++) { 
-      @ $rsid = $resourceses[$b][rsId];
-      @ $duration = $resourceses[$b][duration];
-      @ $viewcount = $resourceses[$b][viewCount];
-      @ $commentcount = $resourceses[$b][commentcount];
-      @ $title =  $resourceses[$b][title];
-      @ $thumbnail = $resourceses[$b][thumbnail];
-      echo "<div class=\"col-xs-4\">";
-      echo "<a target=\"_blank\" href=\"./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
-      echo "<div class=\"info\">";
-      echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$viewcount."</h6></span>";
+      $rsid = $resourceses[$b][rsId];
+      $duration = $resourceses[$b][duration];
+      $viewcount = $resourceses[$b][viewCount];
+      $commentcount = $resourceses[$b][commentcount];
+      $title =  $resourceses[$b][title];
+      $thumbnail = $resourceses[$b][thumbnail];
+      echo '<div class="col-xs-4">';
+      echo '<a target="_blank" href="./play.php?rsid=' . $rsid . '"><img src="'. eximg($thumbnail) . '"></a>';
+      echo '<div class="info">';
+      echo '<span class="glyphicon glyphicon glyphicon-play"><h6>' . $viewcount . '</h6></span>';
       // echo "<span class=\"glyphicon glyphicon glyphicon-comment\"><h6>".$commentcount."</h6></span>";
-      echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
-      echo "<h6>".$title."</h6>";
-      echo "</div>";
-      echo "</div>";
+      echo '<span class="glyphicon glyphicon glyphicon-film"><h6>' . _t($duration) . '</h6></span>';
+      echo '<h6>' . $title . '</h6>';
+      echo '</div>';
+      echo '</div>';
     }
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
+    echo '</div></div></div>';
 }
-
- ?>
+?>
  <!-- 翻页 -->
  <nav>
   <ul class="pager">
-    <?php 
+<?php 
      if ($page < 1) {
-       echo "<li class=\"previous disabled\">";
+       echo '<li class="previous disabled">';
      } else {
-       echo "<li class=\"previous\"><a href=\"./album.php?page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
-     }?>
+       echo '<li class="previous"><a href="./album.php?page=' . $page . '><span aria-hidden="true">&larr;</span>上一页';
+     }
+?>
     </a></li>
-    <?php 
+<?php 
       $page = $page+2;
       if ($arrlen < 10) {
-         echo "<li class=\"next disabled\">";
-      } else echo "<li class=\"next\"><a href=./album.php?page=".$page.">下一页<span aria-hidden=\"true\">&rarr;</span>";
-     ?>
+         echo '<li class="next disabled">';
+      } else echo '<li class="next"><a href=./album.php?page=' . $page . '>下一页<span aria-hidden="true">&rarr;</span>';
+?>
    </li>
   </ul>
 </nav>

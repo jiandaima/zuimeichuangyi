@@ -48,16 +48,16 @@ require_once('./inc.php');
 </nav>
 <!-- 幻灯片 -->
 <?php 
-  @ $page = $_GET['page'];
-  echo "<div class=\"container\">";
-  if ($page > 1) {
-     echo "<div class=\"alert alert-success\">";
-     echo "<h4 class=\"text-center\" style=\"margin-bottom: 0px;\">";
-     echo "当前在第 ".$page." 页</h4></div>";
-     echo "<div id=\"myCarousel\" class=\"carousel slide\" style=\"display:none;\">";
-  } else {
-  echo "<div id=\"myCarousel\" class=\"carousel slide\">";
-  }
+     @ $page = $_GET['page'];
+     echo '<div class="container">';
+     if ($page > 1) {
+        echo '<div class="alert alert-success">';
+        echo '<h4 class="text-center" style="margin-bottom: 0px;">';
+        echo '当前在第 ' . $page . ' 页</h4></div>';
+        echo '<div id="myCarousel" class="carousel slide" style="display:none;">';
+     } else {
+     echo '<div id="myCarousel" class="carousel slide">';
+     }
 ?>
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -69,7 +69,7 @@ require_once('./inc.php');
   <!-- 幻灯片内容 -->
   <div class="carousel-inner">
    <?php 
-     $url = "http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F";
+     $url = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/album/getAlbumRecommendResources?imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';
      $obj = getdata($url);
     for ($i=0; $i <5 ; $i++) {
        @ $objs = $obj[album][$i][resourceses][0];
@@ -77,13 +77,13 @@ require_once('./inc.php');
        @ $title = $objs[title];
        @ $thumbnail = $objs[thumbnail];
        if ($i == 0) {
-         echo "<div class=\"item active\">";
+         echo '<div class="item active">';
        } else {
-         echo "<div class=\"item\">";
+         echo '<div class="item">';
        }
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\"></a>";
-       echo "<h6>".$title."</h6>";
-       echo "</div>";   
+       echo '<a target="_blank\" href=./play.php?rsid=' . $rsid . '"><img src="' . eximg($thumbnail) . '"></a>';
+       echo '<h6>' . $title . '</h6>';
+       echo '</div>';   
 } 
  ?>
 </div>
@@ -105,9 +105,8 @@ require_once('./inc.php');
         $page = $page -1;
       }
      $host = 'http://115.28.54.40:8080/beautyideaInterface/api/v1/resources/getResources?&imieId=8188F0E88298ED8DDAB8AA4C94DD7F8F';               //服务器
-     $pageno = "&pageNo=".$page*10;
+     $pageno = '&pageNo=' . $page*10;
      $url = $host.$pageno;
-     // echo $url;
      $obj = getdata($url);
      @ $arrlen = count($obj[resources]);
      for ($i=0; $i <$arrlen; $i++) {
@@ -119,15 +118,15 @@ require_once('./inc.php');
        @ $title = $objs[title];
        @ $modulesid = $objs[modules][modulesId];
        @ $thumbnail = $objs[thumbnail];
-       echo "<div class=\"col-xs-6\">";
-       echo "<a target=\"_blank\" href=\""."./play.php?rsid=".$rsid."\"><img src=\"".eximg($thumbnail)."\" style:></a>";
-       echo "<div class=\"info\">";
-       echo "<span class=\"glyphicon glyphicon glyphicon glyphicon-th\"><h6>".$class[$modulesid]."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-play\" ><h6>".$view."</h6></span>";
-       echo "<span class=\"glyphicon glyphicon glyphicon-film\"><h6>"._t($duration)."</h6></span>";
-       echo "<h6>".$title."</h6>";
-       echo "</div>";
-       echo "</div>";
+       echo '<div class="col-xs-6">';
+       echo '<a target="_blank" href="./play.php?rsid=' . $rsid . '"><img src="' . eximg($thumbnail) . '"></a>';
+       echo '<div class="info">';
+       echo '<span class="glyphicon glyphicon glyphicon glyphicon-th"><h6>' . $class[$modulesid] . '</h6></span>';
+       echo '<span class="glyphicon glyphicon glyphicon-play" ><h6>' . $view . '</h6></span>';
+       echo '<span class="glyphicon glyphicon glyphicon-film"><h6>' . _t($duration) . '</h6></span>';
+       echo '<h6>' . $title . '</h6>';
+       echo '</div>';
+       echo '</div>';
    }
  ?>
 </div>
@@ -136,17 +135,17 @@ require_once('./inc.php');
   <ul class="pager">
     <?php 
      if ($page < 1) {
-       echo "<li class=\"previous disabled\">";
+       echo '<li class="previous disabled">';
      } else {
       // $page = $page-1;
-       echo "<li class=\"previous\"><a href=\"./index.php?page=".$page."\"><span aria-hidden=\"true\">&larr;</span>上一页";
+       echo '<li class="previous"><a href="./index.php?page=' . $page . '\"><span aria-hidden="true">&larr;</span>上一页';
      }?>
     </a></li>
     <?php 
       $page = $page+2;
       if ($arrlen < 10) {
-         echo "<li class=\"next disabled\">";
-      } else echo "<li class=\"next\"><a href=./index.php?page=".$page.">下一页";
+         echo '<li class="next disabled">';
+      } else echo '<li class="next"><a href="./index.php?page=' . $page . '">下一页';
      ?>
    <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
