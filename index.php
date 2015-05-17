@@ -1,6 +1,28 @@
 <?php 
 require_once('./inc.php');
 ?>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="display:none;">
+  Launch
+</button>
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog" style="magin-top:150px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">关于最美创意 网页版</h4>
+      </div>
+      <div class="modal-body">
+        <p> 最美创意是一款以创意广告、游戏CG、创意短片为主的内容聚合型应用.</p>
+        <p> 而最美创意网页版是以最美创意app的数据制作的适合pc浏览的网站.</p>
+        <p> 有问题请在<a href="about.php">关于</a>页面留言反馈.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
         <!-- 标题 -->
@@ -10,10 +32,9 @@ require_once('./inc.php');
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-left">
         <li class="active"><a href="./">首页</a></li>
         <li><a href="album.php">专辑</a></li>
-        <!-- <a href="modules.php">分类</a> -->
         <li class="dropdown">
         <a id="drop1" class="dropdown-toggle" aria-expanded="false" role="button" aria-haspopup="true" data-toggle="dropdown" href="#">分类
         <span class="caret"></span>
@@ -43,8 +64,8 @@ require_once('./inc.php');
       </form>
       <li><a href="about.php">关于</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!-- /.navbar-collapse
+  </div><! /.container-fluid -->
 </nav>
 <!-- 幻灯片 -->
 <?php 

@@ -9,10 +9,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/modal.js"></script>
     <script>
     $('.carousel').carousel({
     interval: 4000
     })
+    jQuery(document).ready(function($){
+        $('#myModal').modal('show');
+    });
     </script>
     <div style="display:none;">
     <script type="text/javascript">
