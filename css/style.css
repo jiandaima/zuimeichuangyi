@@ -27,10 +27,10 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Micro
 }
 .dropdown-menu{
 	text-align: center;
-	 min-width: 94px;
+	 min-width: 102px;
 }
 .dropdown-menu li{
-   width: 98px;
+   width: 102px;
 }
 /*幻灯片*/
 .container .carousel-inner .item img{
@@ -44,7 +44,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Micro
 	margin-left: 10px;
 }
 .container{
-	width: 1200px;
+	width: 1200px !important;
 }
 .carousel{
 	margin-bottom: 20px;

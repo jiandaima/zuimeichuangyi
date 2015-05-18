@@ -8,16 +8,10 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/modal.js"></script>
     <script>
     $('.carousel').carousel({
     interval: 4000
     })
-    jQuery(document).ready(function($){
-        $('#myModal').modal('show');
-    });
-    </script>
     <div style="display:none;">
     <script type="text/javascript">
     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255064204'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1255064204' type='text/javascript'%3E%3C/script%3E"));</script></div>

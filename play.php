@@ -48,7 +48,7 @@ require_once('./functions.php');
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="container" style="width:1170px;">
+<div class="container" style="width:1170px !important;">
 <?php 
       $rsid = $_GET['rsid'];
       $ykurl = 'https://openapi.youku.com/v2/videos/show_basic.json?client_id=9a2160d074803eba&video_id=' . $rsid;
