@@ -116,7 +116,7 @@ require_once('./inc.php');
        @ $duration = $objs[duration];
        @ $title = $objs[title];
        @ $modulesid = $objs[modules][modulesId];
-       @ $thumbnail = $objs[thumbnail];
+       @ $thumbnail = $objs[thumbnailV2];
        echo '<div class="col-xs-6">';
        echo '<a target="_blank" href="./play.php?rsid=' . $rsid . '"><img src="' . eximg($thumbnail) . '"></a>';
        echo '<div class="info">';

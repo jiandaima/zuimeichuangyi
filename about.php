@@ -46,15 +46,19 @@ require_once('inc.php');
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="container center">
+<div class="container left">
+  <h3>欢迎留言</h3>
   <hr>
-  <h5>说点什么呢，今天网站算是完成了(2015-05-12)</h5>
-  <h5>算是自己独立完成的第一个网站<a href="https://github.com/yangzhongchao1011/zuimeichuangyi">源码</a></h5>
-  <h5>当然，难免有些bug和不足</h5>
-  <h5>如果有什么问题，请在这里留言</h5>
-  <h5>这里的数据来自移动端app《最美创意》</h5>
-  <h5>如果你喜欢，请支持app哦</h5>
+  <h5>-------2015-05-12------</h5>
+  <h5>说点什么呢，今天网站算是完成了,如果有什么问题，请在这里留言</h5></h5>
+  <h5>算是自己独立完成的第一个网站<a href="https://github.com/yangzhongchao1011/zuimeichuangyi">源码</a>。当然，难免有些bug和不足</h5>
+  <h5>这里的数据来自移动端app《最美创意》,如果你喜欢，请支持app哦</h5>
   <h5>(貌似下面的多说评论框老是刷新不出)</h5>
+  <h5>-------2015-10-20------</h5>
+  <h5>偶然发现这么多人关注,比博客浏览量都高...</h5>
+  <h5>app的图片链接变了，一直很忙没改，今天再抓一下数据，改了一下</h5>
+  <h5>打算重新用php框架写一下，看着之前的代码真没脸见人</h5>
+
   <h5>欢迎来我的博客<a href="http://www.yangzhongchao.com">草原</a></h5>
   <h5><img src="img/erwei.png" alt="扫一下！！"></h5>
   <hr>
